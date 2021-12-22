@@ -3,6 +3,7 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var mongoose = require("mongoose");
 
 var indexRouter = require("./routes/index");
 
@@ -17,6 +18,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+// Connect to MongoDB Atlas
+mongoose.connect(
+	"mongodb+srv://inventorytop:1234@cluster0.x2k6o.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+);
 
 app.use("/", indexRouter);
 
