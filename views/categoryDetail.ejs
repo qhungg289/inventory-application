@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+		<title><%= title %></title>
+	</head>
+	<body>
+		<header>
+			<h1><%= title %></h1>
+			<p><%= desc %></p>
+		</header>
+		<main>
+			<% if (items.length > 0) { %>
+			<ul>
+				<% items.forEach(item => { %>
+				<li>
+					<a href="<%= item.url %>"><%= item.name %></a>
+				</li>
+				<% }) %>
+			</ul>
+			<% } else { %>
+			<p>This category doesn't have any items yet.</p>
+			<% } %>
+		</main>
+	</body>
+</html>
