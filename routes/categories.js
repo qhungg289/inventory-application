@@ -1,16 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const Category = require("../models/Category");
+const categoriesController = require("../controllers/categoriesController");
 
-router.get("/", (req, res, next) => {
-	Category.find({}).exec((err, categories) => {
-		if (err) {
-			next(err);
-		}
-
-		res.render("categories", { title: "Categories", categories: categories });
-	});
-});
+router.get("/", categoriesController.categoriesListGet);
 
 module.exports = router;
