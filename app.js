@@ -1,13 +1,14 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-var mongoose = require("mongoose");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const mongoose = require("mongoose");
 
-var indexRouter = require("./routes/index");
+const indexRouter = require("./routes/index");
+const categoriesRouter = require("./routes/categories");
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -24,7 +25,9 @@ mongoose.connect(
 	"mongodb+srv://inventorytop:1234@cluster0.x2k6o.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 );
 
+// Use all the routers
 app.use("/", indexRouter);
+app.use("/categories", categoriesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
