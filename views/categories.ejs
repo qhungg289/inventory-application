@@ -12,11 +12,13 @@
 			<h1><%= title %></h1>
 		</header>
 		<main>
-			<% categories.forEach(category => {%>
-			<div>
-				<a href="<%= category.url%>"> <%= category.name%> </a>
-			</div>
-			<% }) %>
+			<ul>
+				<% categories.forEach(category => {%>
+				<li>
+					<a href="<%= category.url%>"> <%= category.name%> </a>
+				</li>
+				<% }) %>
+			</ul>
 		</main>
 	</body>
 </html>
