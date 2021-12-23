@@ -8,8 +8,9 @@ const ItemSchema = new mongoose.Schema({
 	category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
 });
 
+// Virtual property for URL
 ItemSchema.virtual("url").get(function () {
-	return `category/${this.category._id}/${this._id}`;
+	return `category/${this.category._id}/item/${this._id}`;
 });
 
 module.exports = mongoose.model("Item", ItemSchema);
