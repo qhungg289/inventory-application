@@ -10,7 +10,7 @@ const ItemSchema = new mongoose.Schema({
 
 // Virtual property for URL
 ItemSchema.virtual("url").get(function () {
-	return `category/${this.category._id}/item/${this._id}`;
+	return `${this.category._id}/item/${this._id}`;
 });
 
 module.exports = mongoose.model("Item", ItemSchema);
