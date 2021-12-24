@@ -1,8 +1,61 @@
+:root {
+	--primary-font-color: rgb(63, 63, 63);
+	--primary-bg-color: rgb(246, 249, 255);
+	--accent-color: #41abff;
+}
+
 body {
-	padding: 50px;
-	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	padding: 2rem;
+	font-family: sans-serif;
+	color: var(--primary-font-color);
+	background-color: var(--primary-bg-color);
+}
+
+h1 {
+	font-size: 3rem;
 }
 
 a {
-	color: #00b7ff;
+	text-decoration: none;
+}
+
+.button {
+	display: block;
+	font-size: 1rem;
+	padding: 1em;
+	background-color: var(--accent-color);
+	border-radius: 36px;
+	border: none;
+	cursor: pointer;
+	/* box-shadow: #41abff96 0px 3px 11px 0px; */
+	color: #ffffff;
+	font-weight: 600;
+	text-align: center;
+	width: 10rem;
+}
+
+.category-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+	margin-top: 2rem;
+	gap: 1rem;
+}
+
+.category {
+	display: block;
+	background-color: var(--accent-color);
+	align-self: center;
+	padding: 2.5rem 1.75rem;
+	font-size: 1.75rem;
+	text-align: center;
+	border-radius: 14px;
+	cursor: pointer;
+	color: #ffffff;
+	font-weight: 600;
+	/* box-shadow: #8d8d8d8a 0px 4px 6px 0px; */
+}
+
+.button:hover,
+.category:hover {
+	opacity: 0.9;
 }
