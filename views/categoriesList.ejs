@@ -10,15 +10,23 @@
 	<body>
 		<header>
 			<h1><%= title %></h1>
+			<a href="/categories/create" class="button">NEW CATEGORY</a>
 		</header>
 		<main>
-			<ul>
+			<div class="category-container">
 				<% categories.forEach(category => {%>
-				<li>
-					<a href="<%= category.url%>"> <%= category.name%> </a>
-				</li>
+				<a
+					href="<%= category.url%>"
+					class="category"
+					style="
+						background: <%= gradient[Math.floor(Math.random() * gradient.length)
+							] %>;
+					"
+				>
+					<%= category.name%>
+				</a>
 				<% }) %>
-			</ul>
+			</div>
 		</main>
 	</body>
 </html>
