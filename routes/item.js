@@ -4,13 +4,9 @@ const router = express.Router();
 const itemController = require("../controllers/itemController");
 
 // Create new item
-router.get("/create", (req, res, next) => {
-	res.send("get_new_item_form");
-});
+router.get("/create", itemController.itemCreateGet);
 
-router.post("/create", (req, res, next) => {
-	res.send("post_new_item_form");
-});
+router.post("/create", itemController.itemCreatePost);
 
 // Get item detail
 router.get("/:id", itemController.itemDetailGet);
