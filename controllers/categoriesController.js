@@ -12,26 +12,3 @@ exports.categoriesListGet = (req, res, next) => {
 		});
 	});
 };
-
-exports.categoriesCreateGet = (req, res, next) => {
-	res.render("categoryCreateForm", {
-		title: "Create new category",
-		nameInput: "",
-		descInput: "",
-	});
-};
-
-exports.categoriesCreatePost = (req, res, next) => {
-	const category = new Category({
-		name: req.body.name,
-		description: req.body.description,
-	});
-
-	category.save((err, result) => {
-		if (err) {
-			next(err);
-		}
-
-		res.redirect("/categories");
-	});
-};

@@ -3,6 +3,10 @@ const router = express.Router();
 
 const categoryController = require("../controllers/categoryController");
 
+router.get("/create", categoryController.categoryCreateGet);
+
+router.post("/create", categoryController.categoryCreatePost);
+
 router.get("/:id", categoryController.categoryDetailGet);
 
 router.get("/:id/update", (req, res, next) => {

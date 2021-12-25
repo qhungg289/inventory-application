@@ -29,3 +29,26 @@ exports.categoryDetailGet = (req, res, next) => {
 		}
 	);
 };
+
+exports.categoryCreateGet = (req, res, next) => {
+	res.render("categoryCreateForm", {
+		title: "Create new category",
+		nameInput: "",
+		descInput: "",
+	});
+};
+
+exports.categoryCreatePost = (req, res, next) => {
+	const category = new Category({
+		name: req.body.name,
+		description: req.body.description,
+	});
+
+	category.save((err, result) => {
+		if (err) {
+			next(err);
+		}
+
+		res.redirect("/categories");
+	});
+};
