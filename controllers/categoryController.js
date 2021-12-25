@@ -33,8 +33,6 @@ exports.categoryDetailGet = (req, res, next) => {
 exports.categoryCreateGet = (req, res, next) => {
 	res.render("categoryCreateForm", {
 		title: "Create new category",
-		nameInput: "",
-		descInput: "",
 	});
 };
 
@@ -49,6 +47,6 @@ exports.categoryCreatePost = (req, res, next) => {
 			next(err);
 		}
 
-		res.redirect("/categories");
+		res.redirect(result.url);
 	});
 };
