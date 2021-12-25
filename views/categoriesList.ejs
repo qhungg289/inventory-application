@@ -7,9 +7,12 @@
 	<body>
 		<header>
 			<h1><%= title %></h1>
-			<a href="/category/create" class="button">NEW CATEGORY</a>
 		</header>
 		<main>
+			<div class="button-container">
+				<a href="/category/create" class="button">NEW CATEGORY</a>
+				<a href="/item/create" class="button">NEW ITEM</a>
+			</div>
 			<div class="category-container">
 				<% categories.forEach(category => {%>
 				<a href="<%= category.url%>" class="category-card">
