@@ -21,9 +21,10 @@ exports.categoryDetailGet = (req, res, next) => {
 				next(err);
 				return;
 			}
+
 			res.render("categoryDetail", {
 				title: result.category.name,
-				desc: result.category.description,
+				category: result.category,
 				items: result.items,
 			});
 		}
@@ -45,6 +46,34 @@ exports.categoryCreatePost = (req, res, next) => {
 	category.save((err, result) => {
 		if (err) {
 			next(err);
+		}
+
+		res.redirect(result.url);
+	});
+};
+
+exports.categoryUpdateGet = (req, res, next) => {
+	Category.findById(req.params.id).exec((err, result) => {
+		if (err) {
+			next(err);
+			return;
+		}
+
+		res.render("categoryUpdateForm", {
+			title: `Update category: ${result.name}`,
+			category: result,
+		});
+	});
+};
+
+exports.categoryUpdatePost = (req, res, next) => {
+	Category.findByIdAndUpdate(req.params.id, {
+		name: req.body.name,
+		description: req.body.description,
+	}).exec((err, result) => {
+		if (err) {
+			next(err);
+			return;
 		}
 
 		res.redirect(result.url);
