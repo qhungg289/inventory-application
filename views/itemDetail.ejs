@@ -9,12 +9,15 @@
 			<h1><%= title %></h1>
 		</header>
 		<main>
+			<div class="button-container">
+				<a href="<%= item.url %>/update" class="button">UPDATE</a>
+			</div>
 			<p>Description: <%= item.description %></p>
 			<p>Price: $<%= item.price %></p>
 			<p>Number in stock: <%= item.numberInStock %></p>
 			<p>
 				Category:
-				<a href="<%= item.category.url %> "><%= item.category.name %> </a>
+				<a href="<%= item.category.url %> "><%= item.category.name %></a>
 			</p>
 		</main>
 	</body>

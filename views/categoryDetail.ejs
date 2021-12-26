@@ -9,7 +9,10 @@
 			<h1><%= title %></h1>
 		</header>
 		<main>
-			<p><%= desc %></p>
+			<div class="button-container">
+				<a href="<%= category.url %>/update" class="button">UPDATE</a>
+			</div>
+			<p><%= category.description %></p>
 			<% if (items.length > 0) { %>
 			<ul>
 				<% items.forEach(item => { %>
