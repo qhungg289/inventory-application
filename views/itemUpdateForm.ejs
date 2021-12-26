@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include head %>
+		<title><%= title %></title>
+	</head>
+	<body>
+		<header>
+			<h1><%= title %></h1>
+		</header>
+		<main>
+			<form action="" method="post">
+				<label for="name">Name:</label>
+				<input
+					type="text"
+					name="name"
+					id="name"
+					value="<%= item.name %>"
+					required
+					autofocus
+				/>
+
+				<label for="description">Description:</label>
+				<input
+					type="text"
+					name="description"
+					id="description"
+					value="<%= item.description %>"
+				/>
+
+				<label for="price">Price:</label>
+				<input
+					type="number"
+					name="price"
+					id="price"
+					value="<%= item.price %>"
+					required
+				/>
+
+				<label for="numberInStock">Number in stock:</label>
+				<input
+					type="number"
+					name="numberInStock"
+					id="numberInStock"
+					value="<%= item.numberInStock %>"
+				/>
+
+				<label for="category">Category:</label>
+				<select name="category" id="category">
+					<% categories.forEach(category => { %>
+					<option value="<%= category._id %>"><%= category.name %></option>
+					<% }) %>
+				</select>
+
+				<input type="submit" value="UPDATE" class="button" />
+			</form>
+		</main>
+	</body>
+</html>
