@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include head %>
+		<title><%= title %></title>
+	</head>
+	<body>
+		<header>
+			<h1><%= title %></h1>
+		</header>
+		<main>
+			<form action="" method="post">
+				<label for="name">Name:</label>
+				<input
+					type="text"
+					name="name"
+					id="name"
+					value="<%= category.name %>"
+					required
+					autofocus
+				/>
+				<label for="description">Description:</label>
+				<textarea name="description" id="description" cols="30" rows="8">
+<%= category.description %></textarea
+				>
+				<input type="submit" value="UPDATE" class="button" />
+			</form>
+		</main>
+	</body>
+</html>
