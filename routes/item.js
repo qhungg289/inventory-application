@@ -12,13 +12,9 @@ router.post("/create", itemController.itemCreatePost);
 router.get("/:id", itemController.itemDetailGet);
 
 // Update item detail
-router.get("/:id/update", (req, res, next) => {
-	res.send("get_update_item_form");
-});
+router.get("/:id/update", itemController.itemUpdateGet);
 
-router.post("/:id/update", (req, res, next) => {
-	res.send("post_update_item_form");
-});
+router.post("/:id/update", itemController.itemUpdatePost);
 
 // Delete item
 router.get("/:id/delete", (req, res, next) => {

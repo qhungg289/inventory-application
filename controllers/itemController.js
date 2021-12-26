@@ -1,3 +1,5 @@
+const async = require("async");
+
 const Item = require("../models/Item");
 const Category = require("../models/Category");
 
@@ -28,15 +30,45 @@ exports.itemCreateGet = (req, res, next) => {
 };
 
 exports.itemCreatePost = (req, res, next) => {
-	const item = new Item({
-		name: req.body.name,
-		description: req.body.description,
-		price: req.body.price,
-		numberInStock: req.body.stock,
-		category: req.body.category,
-	});
+	const item = new Item(req.body);
 
 	item.save((err, result) => {
+		if (err) {
+			next(err);
+			return;
+		}
+
+		res.redirect(result.url);
+	});
+};
+
+exports.itemUpdateGet = (req, res, next) => {
+	async.parallel(
+		{
+			categories: (callback) => {
+				Category.find({}).exec(callback);
+			},
+			item: (callback) => {
+				Item.findById(req.params.id).exec(callback);
+			},
+		},
+		(err, result) => {
+			if (err) {
+				next(err);
+				return;
+			}
+
+			res.render("itemUpdateForm", {
+				title: `Update item: ${result.item.name}`,
+				item: result.item,
+				categories: result.categories,
+			});
+		}
+	);
+};
+
+exports.itemUpdatePost = (req, res, next) => {
+	Item.findByIdAndUpdate(req.params.id, req.body).exec((err, result) => {
 		if (err) {
 			next(err);
 			return;
