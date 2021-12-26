@@ -39,6 +39,10 @@ a {
 	box-shadow: #74c2ffa1 0px 3px 6px;
 }
 
+.warning {
+	background-color: rgb(255, 49, 117);
+}
+
 .category-container {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
