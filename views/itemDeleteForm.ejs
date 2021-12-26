@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include head %>
+		<title><%= title %></title>
+	</head>
+	<body>
+		<header>
+			<h1><%= title %></h1>
+		</header>
+		<main>
+			<p>Are you really want to delete this item!</p>
+			<form action="" method="post">
+				<input type="hidden" name="id" value="<%= item._id %>" />
+				<input type="submit" value="DELETE" class="button warning" />
+			</form>
+		</main>
+	</body>
+</html>
