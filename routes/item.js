@@ -17,12 +17,8 @@ router.get("/:id/update", itemController.itemUpdateGet);
 router.post("/:id/update", itemController.itemUpdatePost);
 
 // Delete item
-router.get("/:id/delete", (req, res, next) => {
-	res.send("get_delete_item_form");
-});
+router.get("/:id/delete", itemController.itemDeleteGet);
 
-router.post("/:id/delete", (req, res, next) => {
-	res.send("post_delete_item_form");
-});
+router.post("/:id/delete", itemController.itemDeletePost);
 
 module.exports = router;

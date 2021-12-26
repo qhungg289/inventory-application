@@ -77,3 +77,28 @@ exports.itemUpdatePost = (req, res, next) => {
 		res.redirect(result.url);
 	});
 };
+
+exports.itemDeleteGet = (req, res, next) => {
+	Item.findById(req.params.id).exec((err, result) => {
+		if (err) {
+			next(err);
+			return;
+		}
+
+		res.render("itemDeleteForm", {
+			title: `Delete item: ${result.name}`,
+			item: result,
+		});
+	});
+};
+
+exports.itemDeletePost = (req, res, next) => {
+	Item.deleteOne({ _id: req.body.id }).exec((err, result) => {
+		if (err) {
+			next(err);
+			return;
+		}
+
+		res.redirect("/");
+	});
+};
