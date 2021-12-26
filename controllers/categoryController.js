@@ -38,10 +38,7 @@ exports.categoryCreateGet = (req, res, next) => {
 };
 
 exports.categoryCreatePost = (req, res, next) => {
-	const category = new Category({
-		name: req.body.name,
-		description: req.body.description,
-	});
+	const category = new Category(req.body);
 
 	category.save((err, result) => {
 		if (err) {
@@ -67,10 +64,7 @@ exports.categoryUpdateGet = (req, res, next) => {
 };
 
 exports.categoryUpdatePost = (req, res, next) => {
-	Category.findByIdAndUpdate(req.params.id, {
-		name: req.body.name,
-		description: req.body.description,
-	}).exec((err, result) => {
+	Category.findByIdAndUpdate(req.params.id, req.body).exec((err, result) => {
 		if (err) {
 			next(err);
 			return;
