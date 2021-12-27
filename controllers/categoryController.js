@@ -73,3 +73,39 @@ exports.categoryUpdatePost = (req, res, next) => {
 		res.redirect(result.url);
 	});
 };
+
+exports.categoryDeleteGet = (req, res, next) => {
+	async.parallel(
+		{
+			category: (callback) => {
+				Category.findById(req.params.id).exec(callback);
+			},
+			items: (callback) => {
+				Item.find({ category: req.params.id }).exec(callback);
+			},
+		},
+		(err, result) => {
+			if (err) {
+				next(err);
+				return;
+			}
+
+			res.render("categoryDeleteForm", {
+				title: `Delete category: ${result.category.name}`,
+				category: result.category,
+				items: result.items,
+			});
+		}
+	);
+};
+
+exports.categoryDeletePost = (req, res, next) => {
+	Category.deleteOne({ _id: req.body.id }).exec((err, result) => {
+		if (err) {
+			next(err);
+			return;
+		}
+
+		res.redirect("/");
+	});
+};

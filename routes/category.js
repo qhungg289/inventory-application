@@ -13,12 +13,8 @@ router.get("/:id/update", categoryController.categoryUpdateGet);
 
 router.post("/:id/update", categoryController.categoryUpdatePost);
 
-router.get("/:id/delete", (req, res, next) => {
-	res.send(`GET_DELETE_CATEGORY_FORM: ${req.params.id}`);
-});
+router.get("/:id/delete", categoryController.categoryDeleteGet);
 
-router.post("/:id/delete", (req, res, next) => {
-	res.send(`POST_DELETE_CATEGORY_FORM: ${req.params.id}`);
-});
+router.post("/:id/delete", categoryController.categoryDeletePost);
 
 module.exports = router;
