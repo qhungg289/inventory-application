@@ -6,7 +6,7 @@
 
 body {
 	padding: 2rem;
-	font-family: sans-serif;
+	font-family: "Poppins", sans-serif;
 	color: var(--primary-font-color);
 	background-color: var(--primary-bg-color);
 }
@@ -17,6 +17,30 @@ h1 {
 
 a {
 	text-decoration: none;
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+nav ul {
+	list-style: none;
+	padding: 0;
+}
+
+nav ul h1 {
+	margin: 0;
+	font-family: "Pushster", cursive;
+}
+
+nav ul h1 a {
+	color: var(--primary-font-color);
+}
+
+nav ul li a {
+	color: var(--primary-font-color);
 }
 
 .button-container {
@@ -96,4 +120,17 @@ textarea {
 input[type="text"]:focus,
 textarea:focus {
 	border: 4px solid var(--accent-color);
+}
+
+@media screen and (max-width: 630px) {
+	nav {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
+
+@media screen and (max-width: 440px) {
+	.button-container {
+		flex-direction: column;
+	}
 }
